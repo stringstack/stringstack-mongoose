@@ -1,0 +1,27 @@
+version: "3"
+services:
+
+  mongo-1:
+    container_name: exio-api-mongo-1
+    image: mongo:4.0.5-xenial
+    command: --smallfiles
+    #    volumes:
+    #      - ./var/lib/mongo:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - default
+
+  mongo-2:
+    container_name: exio-api-mongo-2
+    image: mongo:4.0.5-xenial
+    command: --smallfiles
+    #    volumes:
+    #      - ./var/lib/mongo:/data/db
+    ports:
+      - "27018:27017"
+    networks:
+      - default
+
+networks:
+  default:
