@@ -17,19 +17,22 @@ in nconf at the path ```stringstack:mongoose```. The configuration is an object 
 
 ```json
 {
-  "mongoose": {
-    "<connection_name>": {
-      "host": "<one or more Mongo connection URLs, separated by commas. See https://mongoosejs.com/docs/connections.html for examples.>",
-      "options": {
-        "*": "<all options from https://mongoosejs.com/docs/connections.html>"
+  "stringstack": {
+    "mongoose": {
+      "<connection_name>": {
+        "host": "<one or more Mongo connection URLs, separated by commas. See https://mongoosejs.com/docs/connections.html for examples.>",
+        "options": {
+          "*": "<all options from https://mongoosejs.com/docs/connections.html>"
+        }
       }
     }
   }
 }
 ``` 
 
-Note: For options we default useCreateIndex: true. On MongooseJS this defaults to false. This is to be compatible with 
-latest MongoDB drivers as of this version.
+Note: We default some of the options to avoid deprecation warnings triggered by the underlying MongoDB driver. See the
+details [https://mongoosejs.com/docs/deprecations.html](https://mongoosejs.com/docs/deprecations.html). There are some 
+other suggestions on different functions you should use also. It is recommended to follow all examples there.
 
 You can connect to multiple MongoDB server/clusters/replicas. Each connection name identifies a different set of
 connection options for that connection name. You can use all the connections interchangeably. 

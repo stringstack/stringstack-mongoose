@@ -55,11 +55,15 @@ class MongoComponent {
       return done( new Error( 'connection not found' ) );
     }
 
-    // swap for config for connection
+    // Set default configs
+    // These are based on disabling deprecated features in the underlying MongoDB driver.
+    // See https://mongoosejs.com/docs/deprecations.html
     config = __( {
       host: null,
       options: {
-        useCreateIndex: true // The underlying version of MongoDB driver used by MongooseJS likes this better
+        useCreateIndex: true,
+        useFindAndModify: false,
+        useNewUrlParser: true
       }
     } ).mixin( config [ connectionName ] );
 
