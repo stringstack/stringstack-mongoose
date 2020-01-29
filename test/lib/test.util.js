@@ -32,10 +32,16 @@ module.exports = {
     async.waterfall( [
       ( done ) => {
 
+        // Set default configs
+        // These are based on disabling deprecated features in the underlying MongoDB driver.
+        // See https://mongoosejs.com/docs/deprecations.html
         database = __( {
           host: null,
           options: {
-            useCreateIndex: true
+            useCreateIndex: true,
+            useFindAndModify: false,
+            useNewUrlParser: true,
+            useUnifiedTopology: true
           }
         } ).mixin( database );
 

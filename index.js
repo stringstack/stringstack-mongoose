@@ -55,29 +55,30 @@ class MongoComponent {
       return done( new Error( 'connection not found' ) );
     }
 
-    // Set default configs
-    // These are based on disabling deprecated features in the underlying MongoDB driver.
-    // See https://mongoosejs.com/docs/deprecations.html
-    config = __( {
-      host: null,
-      options: {
-        useCreateIndex: true,
-        useFindAndModify: false,
-        useNewUrlParser: true
-      }
-    } ).mixin( config [ connectionName ] );
-
-    // minimal config validation
-    if ( typeof config.host !== 'string' || config.host.trim().length < 1 ) {
-      return done( new Error( 'host must be non-empty string' ) );
-    }
-
     // check for cached connection
     if ( this._connections.hasOwnProperty( connectionName ) ) {
 
-      done( null, this._connections[ connectionName ] ); // serve the cached connection
+      done( null, this._connections[connectionName] ); // serve the cached connection
 
     } else {
+
+      // Set default configs
+      // These are based on disabling deprecated features in the underlying MongoDB driver.
+      // See https://mongoosejs.com/docs/deprecations.html
+      config = __( {
+        host: null,
+        options: {
+          useCreateIndex: true,
+          useFindAndModify: false,
+          useNewUrlParser: true,
+          useUnifiedTopology: true
+        }
+      } ).mixin( config [connectionName] );
+
+      // minimal config validation
+      if ( typeof config.host !== 'string' || config.host.trim().length < 1 ) {
+        return done( new Error( 'host must be non-empty string' ) );
+      }
 
       // make a new connection
       const conn = mongoose.createConnection( config.host, config.options, ( err ) => {
@@ -87,7 +88,7 @@ class MongoComponent {
           return done( err );
         }
 
-        this._connections[ connectionName ] = conn; // cache the connection
+        this._connections[connectionName] = conn; // cache the connection
 
         done( null, conn );
 
