@@ -10,12 +10,12 @@
     "test": "docker-compose --project-name=stringstack-mongoose-test up -d; ./node_modules/mocha/bin/mocha --exit; echo tests complete; docker-compose --project-name=stringstack-mongoose-test down -v;"
   },
   "dependencies": {
-    "doublescore": "0.3.7",
-    "mongoose": "5.4.7"
+    "doublescore": "1.0.0",
+    "mongoose": "5.8.10"
   },
   "devDependencies": {
-    "@stringstack/core": "^0.3.2",
-    "async": "2.6.1",
+    "@stringstack/core": "^0.4.0",
+    "async": "3.1.1",
     "mocha": "^5.2.0",
     "wait-on": "^3.2.0"
   },
