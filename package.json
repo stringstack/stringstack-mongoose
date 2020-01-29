@@ -1,13 +1,13 @@
 {
   "name": "@stringstack/mongoose",
   "description": "StringStack/mongoose is a connection component for Mongoose/MongoDB.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/StringStack/stringstack-mongoose.git"
   },
   "scripts": {
-    "test": "docker-compose --project-name=stringstack-mongoose-test up -d; ./node_modules/mocha/bin/mocha --exit; echo tests complete; docker-compose --project-name=stringstack-mongoose-test down -v;"
+    "test": "docker-compose --project-name=stringstack-mongoose-test up -d; ./node_modules/mocha/bin/mocha --exit --bail; docker-compose --project-name=stringstack-mongoose-test down -v;"
   },
   "dependencies": {
     "doublescore": "1.0.0",
@@ -41,5 +41,12 @@
   "directories": {
     "test": "test"
   },
-  "author": "Anthony Hildoer <anthony@stringstack.org>"
+  "author": "Anthony Hildoer <anthony@stringstack.org>",
+  "files": [
+    "index.js",
+    "LICENSE",
+    "package-lock.json",
+    "package.json",
+    "README.md"
+  ]
 }

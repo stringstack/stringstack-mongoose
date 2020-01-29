@@ -41,15 +41,24 @@ SetupTestConfigComponent.resetDefaultConfig = function () {
   SetupTestConfigComponent.defaultConfig = {
     'mongo-1': {
       host: 'mongodb://localhost:27017/test-database',
-      options: { useNewUrlParser: true }
+      options: {
+        connectTimeoutMS: 2000,
+        socketTimeoutMS: 2000
+      }
     },
     'mongo-2': {
       host: 'mongodb://localhost:27018/test-database',
-      options: { useNewUrlParser: true }
+      options: {
+        connectTimeoutMS: 2000,
+        socketTimeoutMS: 2000
+      }
     },
     'mongo-3': {
       host: 'mongodb://localhost:27019/test-database', // this host doesn't exist
-      options: { useNewUrlParser: true }
+      options: {
+        connectTimeoutMS: 2000,
+        socketTimeoutMS: 2000
+      }
     }
   };
 

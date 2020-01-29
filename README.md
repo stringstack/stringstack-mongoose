@@ -34,6 +34,13 @@ Note: We default some of the options to avoid deprecation warnings triggered by 
 details [https://mongoosejs.com/docs/deprecations.html](https://mongoosejs.com/docs/deprecations.html). There are some 
 other suggestions on different functions you should use also. It is recommended to follow all examples there.
 
+This version of code is setting the following defaults to overcome deprecation warnings:
+
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+mongoose.set('useUnifiedTopology', true);
+
 You can connect to multiple MongoDB server/clusters/replicas. Each connection name identifies a different set of
 connection options for that connection name. You can use all the connections interchangeably. 
 
